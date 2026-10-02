@@ -105,9 +105,9 @@
 <section id="contact" class="section alt narrow">
   <h2>Contact &amp; Information</h2>
   <p>Palawan Tourism Office, Puerto Princesa City, Palawan, Philippines</p>
-  <p>Email: <a href="mailto:info@example.com">info@example.com</a> &bull; Phone: +63 900 000 0000</p>
-  <p class="actions"><button data-copy="info@example.com">Copy email</button> <button data-copy="+63 900 000 0000">Copy phone</button> <a class="btnlite" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Palawan+Tourism+Office+Puerto+Princesa">Open in Google Maps</a></p>
-  <p class="small">Replace this sample contact info with your group's details. Website created for a cloud deployment class activity.</p>
+  <p>Email: <a href="mailto:rollo.jhonard@ue.edu.ph">rollo.jhonard@ue.edu.ph</a> &bull; Phone: <a href="tel:09981757413">0998 175 7413</a></p>
+  <p class="actions"><button data-copy="rollo.jhonard@ue.edu.ph">Copy email</button> <button data-copy="09981757413">Copy phone</button> <a class="btnlite" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Palawan+Tourism+Office+Puerto+Princesa">Open in Google Maps</a></p>
+  <p class="small">Website created for a cloud deployment class activity.</p>
 </section>
 
 <footer>&copy; 2026 Visit Palawan (student project). Hosted on Amazon S3. <a href="#home">Back to top &uarr;</a></footer>
@@ -115,44 +115,177 @@
 <dialog id="lb"><button class="x" aria-label="Close">&times;</button><button class="nv" id="prev" aria-label="Previous">&#8249;</button><img alt=""><button class="nv" id="next" aria-label="Next">&#8250;</button><p></p></dialog>
 <div id="toast"></div><button id="toTop" aria-label="Back to top">&uarr;</button>
 <script>
-const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
-const de=document.documentElement,bar=$('#progress'),topb=$('#toTop');
-addEventListener('scroll',()=>{bar.style.width=(de.scrollTop/(de.scrollHeight-de.clientHeight)*100)+'%';topb.classList.toggle('show',de.scrollTop>600)},{passive:true});
-topb.onclick=()=>scrollTo({top:0,behavior:'smooth'});
-const links=$$('.nav nav a');
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.hash==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
-$$('section[id]').forEach(s=>io.observe(s));
-const act=(el,fn)=>{el.onclick=fn;el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fn()}}};
-$$('.facts div').forEach(d=>act(d,()=>$(d.dataset.go).scrollIntoView({behavior:'smooth'})));
-$$('#why .card').forEach(c=>{c.tabIndex=0;act(c,()=>{c.classList.toggle('open');$('.hint',c).textContent=c.classList.contains('open')?'Tap to close':'Tap for more'})});
-const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(t.t);t.t=setTimeout(()=>t.classList.remove('show'),2200)};
-/* attraction details */
-const info=$('#info');
-$$('.photo-card').forEach(c=>act(c,()=>{const im=$('img',c),d=$('img',info);
- d.style.display=im?'block':'none';if(im)d.src=im.src;
- $('h3',info).textContent=$('h3',c).textContent;$('p',info).textContent=c.dataset.more;
- $('ul',info).innerHTML=c.dataset.list.split('|').map(x=>'<li>'+x+'</li>').join('');
- $('a',info).href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(c.dataset.q);info.showModal()}));
-/* gallery lightbox */
-const lb=$('#lb'),figs=$$('.gallery figure');let cur=0;
-const show=i=>{cur=(i+figs.length)%figs.length;const f=figs[cur],im=$('img',f);$('img',lb).style.visibility=im?'visible':'hidden';if(im)$('img',lb).src=im.src;$('p',lb).textContent=$('figcaption',f).textContent+'  ('+(cur+1)+'/'+figs.length+')'};
-figs.forEach((f,i)=>{f.tabIndex=0;act(f,()=>{show(i);lb.showModal()})});
-$('#prev').onclick=()=>show(cur-1);$('#next').onclick=()=>show(cur+1);
-addEventListener('keydown',e=>{if(lb.open){if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1)}});
-[info,lb].forEach(d=>{d.onclick=e=>{if(e.target===d||e.target.classList.contains('x'))d.close()}});
-/* month picker */
-const M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],box=$('#months'),msg=$('#monthmsg');
-const pick=i=>{$$('button',box).forEach((b,j)=>b.classList.toggle('on',i===j));const dry=i>=10||i<=4;
- msg.textContent=dry?M[i]+': dry season. Best for island hopping, diving and beach days.':M[i]+': rainy season. Fewer crowds and lower prices, but expect showers and rougher seas.';msg.className=dry?'dry':'wet'};
-M.forEach((m,i)=>{const b=document.createElement('button');b.textContent=m;b.className=(i>=10||i<=4)?'dryb':'wetb';b.onclick=()=>pick(i);box.appendChild(b)});pick(new Date().getMonth());
-/* tips checklist */
-const tips=$$('.tips li'),cnt=$('#tipcount'),upd=()=>cnt.textContent='Trip checklist: '+$$('.tips li.done').length+' of '+tips.length+' tips noted (tap a tip to check it off)';
-tips.forEach(l=>{l.tabIndex=0;act(l,()=>{l.classList.toggle('done');upd()})});upd();
-/* copy buttons (works on http too) */
-$$('[data-copy]').forEach(b=>b.onclick=()=>{const v=b.dataset.copy;
- const ok=()=>toast('Copied: '+v);
- if(navigator.clipboard&&isSecureContext)navigator.clipboard.writeText(v).then(ok);
- else{const t=document.createElement('textarea');t.value=v;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();ok()}});
+/* ── helpers ── */
+const $  = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+const act = (el, fn) => {
+  el.addEventListener('click', fn);
+  el.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' '){e.preventDefault();fn(e);} });
+};
+
+/* ── scroll progress bar & back-to-top ── */
+const de = document.documentElement, bar = $('#progress'), topb = $('#toTop');
+addEventListener('scroll', () => {
+  bar.style.width = (de.scrollTop / (de.scrollHeight - de.clientHeight) * 100) + '%';
+  topb.classList.toggle('show', de.scrollTop > 600);
+}, {passive:true});
+topb.onclick = () => scrollTo({top:0, behavior:'smooth'});
+
+/* ── active nav link ── */
+const navLinks = $$('.nav nav a');
+new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle('active', a.hash === '#' + e.target.id));
+  });
+}, {rootMargin:'-45% 0px -50% 0px'}).observe && $$('section[id]').forEach(s =>
+  new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) navLinks.forEach(a => a.classList.toggle('active', a.hash==='#'+e.target.id)); });
+  }, {rootMargin:'-45% 0px -50% 0px'}).observe(s)
+);
+
+/* ── facts strip – scroll to section ── */
+$$('.facts div').forEach(d => act(d, () => $(d.dataset.go).scrollIntoView({behavior:'smooth'})));
+
+/* ── "Why Visit" cards – expand / collapse ── */
+$$('#why .card').forEach(c => {
+  c.tabIndex = 0;
+  act(c, () => {
+    c.classList.toggle('open');
+    $('.hint', c).textContent = c.classList.contains('open') ? 'Tap to close' : 'Tap for more';
+  });
+});
+
+/* ── toast ── */
+const toast = msg => {
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.classList.remove('show'), 2400);
+};
+
+/* ── attraction detail modal ── */
+const infoDialog = $('#info');
+$$('.photo-card').forEach(card => {
+  act(card, e => {
+    // Don't re-open if a child button/link was clicked
+    if (e.target && (e.target.tagName === 'BUTTON' || e.target.tagName === 'A')) return;
+    const img = $('img', card);
+    const dImg = $('img', infoDialog);
+    if (img && img.src) {
+      dImg.src = img.src;
+      dImg.alt = img.alt;
+      dImg.style.display = 'block';
+    } else {
+      dImg.style.display = 'none';
+    }
+    $('h3', infoDialog).textContent = $('h3', card).textContent;
+    $('.dbody p', infoDialog).textContent = card.dataset.more || '';
+    $('ul', infoDialog).innerHTML = (card.dataset.list || '')
+      .split('|').filter(Boolean)
+      .map(x => `<li>${x.trim()}</li>`).join('');
+    $('a.btnlite', infoDialog).href =
+      'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(card.dataset.q || '');
+    infoDialog.showModal();
+  });
+});
+
+/* ── gallery lightbox ── */
+const lb = $('#lb'), figs = $$('.gallery figure');
+let cur = 0;
+
+const showSlide = i => {
+  cur = (i + figs.length) % figs.length;
+  const fig = figs[cur];
+  const srcImg = $('img', fig);
+  const lbImg = $('img', lb);
+  if (srcImg && srcImg.src) {
+    lbImg.src = srcImg.src;
+    lbImg.alt = srcImg.alt;
+    lbImg.style.visibility = 'visible';
+  } else {
+    lbImg.style.visibility = 'hidden';
+  }
+  $('p', lb).textContent = $('figcaption', fig).textContent + '  (' + (cur+1) + '/' + figs.length + ')';
+};
+
+figs.forEach((fig, i) => {
+  fig.tabIndex = 0;
+  act(fig, () => { showSlide(i); lb.showModal(); });
+});
+
+$('#prev').addEventListener('click', e => { e.stopPropagation(); showSlide(cur - 1); });
+$('#next').addEventListener('click', e => { e.stopPropagation(); showSlide(cur + 1); });
+
+addEventListener('keydown', e => {
+  if (lb.open) {
+    if (e.key === 'ArrowLeft')  showSlide(cur - 1);
+    if (e.key === 'ArrowRight') showSlide(cur + 1);
+    if (e.key === 'Escape')     lb.close();
+  }
+  if (infoDialog.open && e.key === 'Escape') infoDialog.close();
+});
+
+/* close dialogs by clicking backdrop or X */
+[infoDialog, lb].forEach(d => {
+  d.addEventListener('click', e => {
+    if (e.target === d) d.close();
+  });
+  const xBtn = $('.x', d);
+  if (xBtn) xBtn.addEventListener('click', () => d.close());
+});
+
+/* ── month picker ── */
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const monthBox = $('#months'), monthMsg = $('#monthmsg');
+const pickMonth = i => {
+  $$('button', monthBox).forEach((b, j) => b.classList.toggle('on', i === j));
+  const dry = i >= 10 || i <= 4;
+  monthMsg.textContent = dry
+    ? MONTHS[i] + ': dry season — best for island hopping, diving and beach days.'
+    : MONTHS[i] + ': rainy season — fewer crowds and lower prices, but expect showers and rougher seas.';
+  monthMsg.className = dry ? 'dry' : 'wet';
+};
+MONTHS.forEach((m, i) => {
+  const btn = document.createElement('button');
+  btn.textContent = m;
+  btn.className = (i >= 10 || i <= 4) ? 'dryb' : 'wetb';
+  btn.addEventListener('click', () => pickMonth(i));
+  monthBox.appendChild(btn);
+});
+pickMonth(new Date().getMonth());
+
+/* ── tips checklist ── */
+const tipItems = $$('.tips li'), tipCount = $('#tipcount');
+const updateCount = () => {
+  const done = $$('.tips li.done').length;
+  tipCount.textContent = 'Trip checklist: ' + done + ' of ' + tipItems.length + ' tips noted (tap a tip to check it off)';
+};
+tipItems.forEach(li => {
+  li.tabIndex = 0;
+  act(li, () => { li.classList.toggle('done'); updateCount(); });
+});
+updateCount();
+
+/* ── copy buttons ── */
+$$('[data-copy]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const val = btn.dataset.copy;
+    const ok = () => toast('Copied: ' + val);
+    if (navigator.clipboard && isSecureContext) {
+      navigator.clipboard.writeText(val).then(ok).catch(() => fallbackCopy(val, ok));
+    } else {
+      fallbackCopy(val, ok);
+    }
+  });
+});
+function fallbackCopy(text, cb) {
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); cb(); } catch(_) {}
+  ta.remove();
+}
 </script>
 </body>
 </html>
