@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="progress"></div>
 
 <header class="nav">
   <a href="#home" class="logo">Palawan</a>
@@ -31,10 +32,10 @@
 </section>
 
 <section class="facts" aria-label="Quick facts">
-  <div><strong>Nov&ndash;May</strong><span>Best season</span></div>
-  <div><strong>8.2 km</strong><span>Underground River</span></div>
-  <div><strong>3</strong><span>Airports to fly into</span></div>
-  <div><strong>4+</strong><span>Island-hopping hubs</span></div>
+  <div role="button" tabindex="0" data-go="#tips" title="Tap to jump to details"><strong>Nov&ndash;May</strong><span>Best season</span></div>
+  <div role="button" tabindex="0" data-go="#attractions" title="Tap to jump to details"><strong>8.2 km</strong><span>Underground River</span></div>
+  <div role="button" tabindex="0" data-go="#tips" title="Tap to jump to details"><strong>3</strong><span>Airports to fly into</span></div>
+  <div role="button" tabindex="0" data-go="#attractions" title="Tap to jump to details"><strong>4+</strong><span>Island-hopping hubs</span></div>
 </section>
 
 <section id="intro" class="section narrow">
@@ -45,29 +46,29 @@
 <section id="why" class="section alt">
   <h2>Why Visit Palawan?</h2>
   <div class="grid">
-    <article class="card"><h3>Stunning Nature</h3><p>Hidden lagoons, secret beaches and jungle-covered mountains.</p></article>
-    <article class="card"><h3>World-Class Diving</h3><p>Coral reefs, shipwrecks and sea turtles in clear water.</p></article>
-    <article class="card"><h3>UNESCO Heritage</h3><p>Home to the Puerto Princesa Underground River, one of the New 7 Wonders of Nature.</p></article>
-    <article class="card"><h3>Warm Hospitality</h3><p>Fresh seafood, friendly locals and island-style relaxation.</p></article>
+    <article class="card"><h3>Stunning Nature</h3><p>Hidden lagoons, secret beaches and jungle-covered mountains.</p><p class="more">Palawan has limestone karst, mangroves, waterfalls and rainforest, much of it protected.</p><span class="hint">Tap for more</span></article>
+    <article class="card"><h3>World-Class Diving</h3><p>Coral reefs, shipwrecks and sea turtles in clear water.</p><p class="more">Coron's wrecks and El Nido's reefs suit beginners and experienced divers alike.</p><span class="hint">Tap for more</span></article>
+    <article class="card"><h3>UNESCO Heritage</h3><p>Home to the Puerto Princesa Underground River, one of the New 7 Wonders of Nature.</p><p class="more">The Puerto Princesa Subterranean River National Park is a UNESCO World Heritage Site.</p><span class="hint">Tap for more</span></article>
+    <article class="card"><h3>Warm Hospitality</h3><p>Fresh seafood, friendly locals and island-style relaxation.</p><p class="more">Try grilled seafood and local dishes in Puerto Princesa, and enjoy friendly Filipino hospitality.</p><span class="hint">Tap for more</span></article>
   </div>
 </section>
 
 <section id="attractions" class="section">
   <h2>Featured Attractions</h2>
   <div class="grid">
-    <article class="card photo-card">
+    <article class="card photo-card" role="button" tabindex="0" data-more="Famous for limestone cliffs and turquoise lagoons. Most visitors book island-hopping Tours A, B, C or D, each covering different lagoons and beaches." data-list="Big Lagoon|Small Lagoon|Secret Beach|Seven Commando Beach" data-q="El Nido, Palawan">
       <div class="pic"><img referrerpolicy="no-referrer" src="https://safeandhealthytravel.com/wp-content/uploads/2018/02/header-el-nido-scaled.jpg" alt="El Nido" loading="lazy" onerror="this.remove()"></div>
       <div class="body"><h3>El Nido</h3><p>Island hopping tours with the Big and Small Lagoons, Secret Beach and Seven Commando Beach.</p></div>
     </article>
-    <article class="card photo-card">
+    <article class="card photo-card" role="button" tabindex="0" data-more="A paddle boat takes visitors about 1.5 km into an 8.2 km limestone cave system with huge chambers and rock formations. A permit is required, so book early." data-list="Cathedral chamber|Limestone formations|Wildlife in the cave|Permit required" data-q="Puerto Princesa Subterranean River National Park">
       <div class="pic"><img referrerpolicy="no-referrer" src="https://www.travel-palawan.com/wp-content/uploads/2018/02/cruise-underground-river-palawan.jpeg" alt="Underground River" loading="lazy" onerror="this.remove()"></div>
       <div class="body"><h3>Underground River</h3><p>A boat ride through an 8.2 km cave system in Puerto Princesa Subterranean River National Park.</p></div>
     </article>
-    <article class="card photo-card">
+    <article class="card photo-card" role="button" tabindex="0" data-more="Known for clear lakes and sunken Japanese WWII ships that attract wreck divers." data-list="Kayangan Lake|Twin Lagoon|Barracuda Lake|Wreck diving" data-q="Coron, Palawan">
       <div class="pic"><img referrerpolicy="no-referrer" src="https://seatourspalawan.com/assets/img/expeditions/hero-home-1366.webp" alt="Coron" loading="lazy" onerror="this.remove()"></div>
       <div class="body"><h3>Coron</h3><p>Kayangan Lake, Twin Lagoon and WWII shipwreck dives.</p></div>
     </article>
-    <article class="card photo-card">
+    <article class="card photo-card" role="button" tabindex="0" data-more="A calm bay near Puerto Princesa, ideal for a relaxed day of snorkeling and sandbar hopping." data-list="Starfish Island|Luli Island|Cowrie Island|Snorkeling" data-q="Honda Bay, Palawan">
       <div class="pic"><img referrerpolicy="no-referrer" src="https://moniqueliveslife.com/wp-content/uploads/2018/12/Cowrie-Island-Honda-Bay-Philippines-Drone-1024x768.jpg" alt="Honda Bay" loading="lazy" onerror="this.remove()"></div>
       <div class="body"><h3>Honda Bay</h3><p>Easy island hopping and snorkeling near Puerto Princesa city.</p></div>
     </article>
@@ -76,6 +77,9 @@
 
 <section id="tips" class="section alt">
   <h2>Travel Tips</h2>
+  <div id="months"></div>
+  <p id="monthmsg"></p>
+  <p id="tipcount" class="small"></p>
   <ul class="tips">
     <li><strong>Best time:</strong> November to May (dry season).</li>
     <li><strong>Getting there:</strong> Fly to Puerto Princesa (PPS), El Nido (ENI) or Busuanga/Coron (USU).</li>
@@ -102,9 +106,53 @@
   <h2>Contact &amp; Information</h2>
   <p>Palawan Tourism Office, Puerto Princesa City, Palawan, Philippines</p>
   <p>Email: <a href="mailto:info@example.com">info@example.com</a> &bull; Phone: +63 900 000 0000</p>
+  <p class="actions"><button data-copy="info@example.com">Copy email</button> <button data-copy="+63 900 000 0000">Copy phone</button> <a class="btnlite" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Palawan+Tourism+Office+Puerto+Princesa">Open in Google Maps</a></p>
   <p class="small">Replace this sample contact info with your group's details. Website created for a cloud deployment class activity.</p>
 </section>
 
 <footer>&copy; 2026 Visit Palawan (student project). Hosted on Amazon S3. <a href="#home">Back to top &uarr;</a></footer>
+<dialog id="info"><button class="x" aria-label="Close">&times;</button><img alt=""><div class="dbody"><h3></h3><p></p><ul></ul><a class="btnlite" target="_blank" rel="noopener">View on Google Maps</a></div></dialog>
+<dialog id="lb"><button class="x" aria-label="Close">&times;</button><button class="nv" id="prev" aria-label="Previous">&#8249;</button><img alt=""><button class="nv" id="next" aria-label="Next">&#8250;</button><p></p></dialog>
+<div id="toast"></div><button id="toTop" aria-label="Back to top">&uarr;</button>
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const de=document.documentElement,bar=$('#progress'),topb=$('#toTop');
+addEventListener('scroll',()=>{bar.style.width=(de.scrollTop/(de.scrollHeight-de.clientHeight)*100)+'%';topb.classList.toggle('show',de.scrollTop>600)},{passive:true});
+topb.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+const links=$$('.nav nav a');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.hash==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+$$('section[id]').forEach(s=>io.observe(s));
+const act=(el,fn)=>{el.onclick=fn;el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fn()}}};
+$$('.facts div').forEach(d=>act(d,()=>$(d.dataset.go).scrollIntoView({behavior:'smooth'})));
+$$('#why .card').forEach(c=>{c.tabIndex=0;act(c,()=>{c.classList.toggle('open');$('.hint',c).textContent=c.classList.contains('open')?'Tap to close':'Tap for more'})});
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(t.t);t.t=setTimeout(()=>t.classList.remove('show'),2200)};
+/* attraction details */
+const info=$('#info');
+$$('.photo-card').forEach(c=>act(c,()=>{const im=$('img',c),d=$('img',info);
+ d.style.display=im?'block':'none';if(im)d.src=im.src;
+ $('h3',info).textContent=$('h3',c).textContent;$('p',info).textContent=c.dataset.more;
+ $('ul',info).innerHTML=c.dataset.list.split('|').map(x=>'<li>'+x+'</li>').join('');
+ $('a',info).href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(c.dataset.q);info.showModal()}));
+/* gallery lightbox */
+const lb=$('#lb'),figs=$$('.gallery figure');let cur=0;
+const show=i=>{cur=(i+figs.length)%figs.length;const f=figs[cur],im=$('img',f);$('img',lb).style.visibility=im?'visible':'hidden';if(im)$('img',lb).src=im.src;$('p',lb).textContent=$('figcaption',f).textContent+'  ('+(cur+1)+'/'+figs.length+')'};
+figs.forEach((f,i)=>{f.tabIndex=0;act(f,()=>{show(i);lb.showModal()})});
+$('#prev').onclick=()=>show(cur-1);$('#next').onclick=()=>show(cur+1);
+addEventListener('keydown',e=>{if(lb.open){if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1)}});
+[info,lb].forEach(d=>{d.onclick=e=>{if(e.target===d||e.target.classList.contains('x'))d.close()}});
+/* month picker */
+const M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],box=$('#months'),msg=$('#monthmsg');
+const pick=i=>{$$('button',box).forEach((b,j)=>b.classList.toggle('on',i===j));const dry=i>=10||i<=4;
+ msg.textContent=dry?M[i]+': dry season. Best for island hopping, diving and beach days.':M[i]+': rainy season. Fewer crowds and lower prices, but expect showers and rougher seas.';msg.className=dry?'dry':'wet'};
+M.forEach((m,i)=>{const b=document.createElement('button');b.textContent=m;b.className=(i>=10||i<=4)?'dryb':'wetb';b.onclick=()=>pick(i);box.appendChild(b)});pick(new Date().getMonth());
+/* tips checklist */
+const tips=$$('.tips li'),cnt=$('#tipcount'),upd=()=>cnt.textContent='Trip checklist: '+$$('.tips li.done').length+' of '+tips.length+' tips noted (tap a tip to check it off)';
+tips.forEach(l=>{l.tabIndex=0;act(l,()=>{l.classList.toggle('done');upd()})});upd();
+/* copy buttons (works on http too) */
+$$('[data-copy]').forEach(b=>b.onclick=()=>{const v=b.dataset.copy;
+ const ok=()=>toast('Copied: '+v);
+ if(navigator.clipboard&&isSecureContext)navigator.clipboard.writeText(v).then(ok);
+ else{const t=document.createElement('textarea');t.value=v;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();ok()}});
+</script>
 </body>
 </html>

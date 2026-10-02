@@ -87,3 +87,50 @@ footer a{color:var(--gold);margin-left:10px}
 }
 @media(max-width:600px){.nav nav a{margin:0 12px 0 0}.section{padding:60px 18px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* INTERACTIONS */
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:var(--gold);z-index:60}
+.nav nav a.active::after{width:100%}
+.facts div{cursor:pointer;transition:background .25s,transform .25s}
+.facts div:hover{background:#e9f6f5;transform:translateY(-3px)}
+#why .card{cursor:pointer;position:relative}
+.more{max-height:0;opacity:0;overflow:hidden;margin:0;transition:max-height .4s,opacity .4s,margin .4s;color:#444}
+.card.open .more{max-height:140px;opacity:1;margin-top:10px}
+.hint{display:block;margin-top:10px;font-size:.78rem;color:var(--teal);font-weight:bold}
+.photo-card{cursor:pointer}
+.photo-card .body::after{content:"View details \2192";display:block;margin-top:10px;font-size:.85rem;font-weight:bold;color:var(--teal);transition:transform .3s}
+.photo-card:hover .body::after{transform:translateX(8px)}
+.gallery figure{cursor:zoom-in}
+#months{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:14px}
+#months button{border:2px solid var(--teal);background:#fff;color:var(--teal);padding:6px 14px;border-radius:20px;cursor:pointer;font-weight:bold;transition:all .2s}
+#months button.wetb{border-color:#8aa}
+#months button:hover{transform:translateY(-2px)}
+#months button.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+#monthmsg{text-align:center;padding:12px 16px;border-radius:10px;margin-bottom:10px;font-weight:bold;animation:fadeUp .4s}
+#monthmsg.dry{background:#fff3cf;color:#7a5a00}#monthmsg.wet{background:#dcecf7;color:#1b4b6b}
+#tipcount{text-align:center;margin:0 auto 14px}
+.tips li{cursor:pointer;transition:transform .3s,opacity .3s}
+.tips li::before{content:"\25CB  ";color:var(--teal)}
+.tips li.done{opacity:.6;border-left-color:var(--teal)}
+.tips li.done::before{content:"\2713  ";font-weight:bold}
+.tips li.done strong{text-decoration:line-through}
+.actions{margin-top:18px}
+.actions button,.btnlite{display:inline-block;margin:4px;border:0;background:var(--teal);color:#fff;padding:10px 20px;border-radius:30px;cursor:pointer;font:inherit;font-weight:bold;text-decoration:none;transition:transform .2s,background .2s}
+.actions button:hover,.btnlite:hover{transform:translateY(-3px);background:var(--dark)}
+dialog{border:0;border-radius:16px;width:min(680px,92vw);padding:0;overflow:hidden;margin:auto}
+dialog[open]{animation:pop .3s ease}
+dialog::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(3px)}
+#info img{width:100%;height:240px;object-fit:cover;display:block;background:linear-gradient(135deg,#27c3c0,#0b7a75)}
+.dbody{padding:22px 26px 28px}.dbody h3{color:var(--teal);font-size:1.6rem}.dbody p{margin:8px 0 12px}
+.dbody ul{margin:0 0 16px 20px}
+.x{position:absolute;top:10px;right:12px;z-index:2;width:38px;height:38px;border:0;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;font-size:1.5rem;cursor:pointer}
+#lb{background:#111;color:#fff;text-align:center;width:min(960px,96vw)}
+#lb img{width:100%;max-height:75vh;object-fit:contain;display:block}
+#lb p{padding:12px}
+.nv{position:absolute;top:45%;border:0;background:rgba(255,255,255,.2);color:#fff;font-size:2.4rem;width:48px;height:60px;cursor:pointer;z-index:2}
+#prev{left:0}#next{right:0}
+#toast{position:fixed;bottom:28px;left:50%;transform:translate(-50%,30px);background:var(--dark);color:#fff;padding:12px 22px;border-radius:30px;opacity:0;pointer-events:none;transition:all .3s;z-index:90}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+#toTop{position:fixed;right:20px;bottom:24px;width:46px;height:46px;border:0;border-radius:50%;background:var(--gold);font-size:1.3rem;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.3);opacity:0;transform:scale(.6);pointer-events:none;transition:all .3s;z-index:40}
+#toTop.show{opacity:1;transform:none;pointer-events:auto}
+@keyframes pop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
